@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HR Virtual Assistant - CV Matching System</title>
+    
+    <!-- External Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+    
+    <!-- CSS File -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1> HR Virtual Assistant</h1>
+            <p>AI-Powered CV-Job Matching System | PDF & Word Support</p>
+        </div>
+
+        <!-- Input Section -->
+        <div class="main-grid">
+            <!-- Job Description Card -->
+            <div class="card">
+                <h2>📋 Job Description</h2>
+                <div class="form-group">
+                    <label>Job Title *</label>
+                    <input type="text" id="jobTitle" class="input-field" placeholder="e.g., Senior Software Engineer">
+                </div>
+                <div class="form-group">
+                    <label>Job Description & Requirements *</label>
+                    <textarea id="jobDescription" placeholder="Paste job description here...
+
+Example:
+We are looking for a Senior Software Engineer with:
+- 5+ years of experience
+- Strong Python, Django, React skills
+- AWS/Cloud experience
+- Bachelor's degree in Computer Science
+- Excellent problem-solving abilities
+- Team collaboration skills"></textarea>
+                </div>
+            </div>
+
+            <!-- CV Upload Card -->
+            <div class="card">
+                <h2>📄 Candidate CV</h2>
+                <div class="upload-area" id="uploadArea">
+                    <input type="file" id="cvFile" accept=".pdf,.doc,.docx">
+                    <div class="upload-icon">📁</div>
+                    <div class="upload-text">Click or Drag & Drop CV</div>
+                    <div class="upload-subtext">Supports PDF, DOC, DOCX files</div>
+                </div>
+                <div id="fileInfo" class="file-info"></div>
+                
+                <button id="analyzeBtn" class="btn btn-primary" disabled>
+                    🔍 Analyze Match
+                </button>
+            </div>
+        </div>
+
+        <!-- Loading -->
+        <div id="loading" class="loading">
+            <div class="spinner"></div>
+            <p>Virtual Assistant is analyzing...</p>
+        </div>
+
+        <!-- Results Section -->
+        <div id="resultsSection" class="results-section">
+            <!-- Score Card -->
+            <div class="score-card">
+                <h2>📊 Match Assessment</h2>
+                <div id="scoreCircle" class="score-circle">
+                    <div id="scorePercentage">0%</div>
+                </div>
+                <div id="matchLevel" class="match-level">Calculating...</div>
+                <div id="scoreLabel" class="score-label"></div>
+            </div>
+
+            <!-- Analysis Grid -->
+            <div class="analysis-grid">
+                <!-- Matched Skills -->
+                <div class="analysis-card">
+                    <h3>✅ Matched Skills</h3>
+                    <div id="matchedSkills"></div>
+                </div>
+
+                <!-- Missing Skills -->
+                <div class="analysis-card">
+                    <h3>❌ Missing Skills</h3>
+                    <div id="missingSkills"></div>
+                </div>
+
+                <!-- Experience -->
+                <div class="analysis-card">
+                    <h3>💼 Experience Analysis</h3>
+                    <div id="experienceAnalysis"></div>
+                </div>
+
+                <!-- Qualifications -->
+                <div class="analysis-card">
+                    <h3>🎓 Qualifications</h3>
+                    <div id="qualificationsAnalysis"></div>
+                </div>
+            </div>
+
+            <!-- Virtual Assistant Recommendations -->
+            <div class="assistant-card">
+                <h3> Virtual Assistant Recommendations</h3>
+                <div id="recommendations"></div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <button class="btn btn-secondary" id="resetBtn">🔄 New Analysis</button>
+                <button class="btn btn-primary" id="downloadBtn">📥 Download Report</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript File -->
+    <script src="app.js"></script>
+</body>
+</html>
